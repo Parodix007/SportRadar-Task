@@ -1,15 +1,13 @@
 package org.sebastiansiarczynski.dto;
 
-import lombok.Getter;
+import java.time.ZonedDateTime;
+import lombok.NonNull;
 import org.sebastiansiarczynski.exception.GameCreatingException;
 
-@Getter
-abstract class GameDto {
+public record StartGameDto(String homeTeam, String awayTeam, ZonedDateTime startDate) {
 
-  protected final String homeTeam;
-  protected final String awayTeam;
-
-  GameDto(final String homeTeam, final String awayTeam) {
+  public StartGameDto(@NonNull final String homeTeam, @NonNull final String awayTeam,
+      @NonNull final ZonedDateTime startDate) {
     if (homeTeam.isBlank() || awayTeam.isBlank()) {
       throw new GameCreatingException(
           "Error while creating a game! Home team or Away team name cannot be empty or null!");
@@ -22,5 +20,6 @@ abstract class GameDto {
 
     this.homeTeam = homeTeam;
     this.awayTeam = awayTeam;
+    this.startDate = startDate;
   }
 }

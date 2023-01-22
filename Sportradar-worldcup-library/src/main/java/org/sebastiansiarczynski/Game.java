@@ -1,15 +1,24 @@
 package org.sebastiansiarczynski;
 
-import java.time.ZonedDateTime;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-final class Game {
+abstract class Game {
 
-  private String homeTeam;
-  private String awayTeam;
+  protected final String homeTeam;
+  protected final String awayTeam;
+
+  @Getter
+  @Setter
   private int homeScore;
+  @Getter
+  @Setter
   private int awayScore;
-  private ZonedDateTime startDate;
-  private ZonedDateTime endDate;
+
+  Game(final String homeTeam, final String awayTeam, final int homeScore, final int awayScore) {
+    this.homeTeam = homeTeam;
+    this.awayTeam = awayTeam;
+    this.homeScore = homeScore;
+    this.awayScore = awayScore;
+  }
 }
