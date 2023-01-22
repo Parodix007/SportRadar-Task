@@ -100,6 +100,7 @@ class GamesBoardTest {
   }
 
   @Test
+  @DisplayName("Should return properly sorted list of ended games")
   void getEndedGames() {
     //given
     ZonedDateTime now = ZonedDateTime.now();
@@ -133,5 +134,31 @@ class GamesBoardTest {
     assertEquals(thirdSortedGame.awayScore(), secondEndedGame.getAwayScore());
 
     Mockito.verify(gamesStore, Mockito.times(1)).getFinishGames();
+  }
+
+  @Test
+  @DisplayName("Should return list of ended games no sorted")
+  void getEndedGamesNoSorted() {
+    //given
+    ZonedDateTime now = ZonedDateTime.now();
+    String name = "some-name";
+    EndedGame firstEndedGame = new EndedGame(name, name, 1, 10,
+        now);
+    EndedGame secondEndedGame = new EndedGame(name, name, 1, 2,
+        now);
+
+    List<EndedGame> mockGames = List.of(firstEndedGame, secondEndedGame);
+
+    List<EndedGameDto> properResult = mockGames.stream()
+        .map(endedGame -> new EndedGameDto(endedGame.homeTeam, endedGame.awayTeam,
+            endedGame.getHomeScore(), endedGame.getAwayScore(), endedGame.getEndDate())).toList();
+
+    Mockito.when(gamesStore.getFinishGames()).thenReturn(mockGames);
+
+    //when
+    List<EndedGameDto> endedGames = gamesBoard.getEndedGames();
+
+    //then
+    assertTrue(endedGames.containsAll(properResult));
   }
 }
