@@ -43,7 +43,7 @@ When you are ready with dto now it's time for start the game!
 This method start a game with <b>initial score for both teams which is 0</b>. Returns <b>uniq
 game UUID</b>
 
-### Update Game Score
+### Update a game score
 
 * This library allows you to update a game score. To do that you need to create a
   ```UpdateGameDto```.
@@ -69,7 +69,7 @@ Now pass this dto to the facade.
     gamesBoard.finishGame(gameUuid,end);
 ```
 
-### Ended Games
+### Ended games
 
 * Application allows you to get all ended games. Those games are returner ordered by draws -
   games with a draw score will be firsts in the list
