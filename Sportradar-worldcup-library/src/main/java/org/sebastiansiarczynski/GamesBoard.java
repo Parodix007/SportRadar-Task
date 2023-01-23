@@ -10,9 +10,10 @@ import org.sebastiansiarczynski.dto.EndedGameDto;
 import org.sebastiansiarczynski.dto.StartGameDto;
 import org.sebastiansiarczynski.dto.UpdateGameDto;
 import org.sebastiansiarczynski.exception.GamesStoreException;
+import org.sebastiansiarczynski.interfaces.Board;
 
 @RequiredArgsConstructor
-public final class GamesBoard {
+public final class GamesBoard implements Board {
 
   private final GamesStore gamesStore;
 
@@ -23,7 +24,7 @@ public final class GamesBoard {
         0,
         startGame.startDate());
 
-    String gameUUID = UUID.randomUUID().toString();
+    final String gameUUID = UUID.randomUUID().toString();
 
     gamesStore.startGame(gameUUID, startedGame);
 
@@ -33,9 +34,9 @@ public final class GamesBoard {
   public boolean finishGame(@NonNull final String gameUUID, @NonNull final ZonedDateTime endDate)
       throws GamesStoreException {
 
-    StartedGame gameToFinish = gamesStore.getStartedByGameUuid(gameUUID);
+    final StartedGame gameToFinish = gamesStore.getStartedByGameUuid(gameUUID);
 
-    EndedGame endedGame = new EndedGame(gameToFinish.homeTeam, gameToFinish.awayTeam,
+    final EndedGame endedGame = new EndedGame(gameToFinish.homeTeam, gameToFinish.awayTeam,
         gameToFinish.getHomeScore(), gameToFinish.getAwayScore(), endDate);
 
     return gamesStore.finishGame(gameUUID, endedGame);
@@ -44,7 +45,7 @@ public final class GamesBoard {
   public boolean updateGameScore(@NonNull final UpdateGameDto updateGame)
       throws GamesStoreException {
 
-    StartedGame gameToUpdate = gamesStore.getStartedByGameUuid(updateGame.gameUUID());
+    final StartedGame gameToUpdate = gamesStore.getStartedByGameUuid(updateGame.gameUUID());
     gameToUpdate.setHomeScore(updateGame.homeScore());
     gameToUpdate.setAwayScore(updateGame.awayScore());
 
@@ -52,13 +53,13 @@ public final class GamesBoard {
   }
 
   public List<EndedGameDto> getEndedGames() {
-    List<EndedGameDto> endedGameDtos = new ArrayList<>(
+    final List<EndedGameDto> endedGameDtos = new ArrayList<>(
         gamesStore.getFinishGames().stream()
             .map(endedGame -> new EndedGameDto(endedGame.homeTeam,
                 endedGame.awayTeam, endedGame.getHomeScore(), endedGame.getAwayScore(),
                 endedGame.getEndDate())).toList());
 
-    List<EndedGameDto> gamesWithTheSameScore =
+    final List<EndedGameDto> gamesWithTheSameScore =
         endedGameDtos.stream()
             .filter(endedGameDto -> endedGameDto.homeScore() == endedGameDto.awayScore())
             .toList();

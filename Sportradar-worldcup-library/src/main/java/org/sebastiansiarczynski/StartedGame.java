@@ -2,11 +2,14 @@ package org.sebastiansiarczynski;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NonNull;
+import org.sebastiansiarczynski.dto.StartGameDto;
 
-final class StartedGame extends Game {
+public final class StartedGame extends Game {
 
-  @Getter
+  @Getter(AccessLevel.PACKAGE)
   private final ZonedDateTime startDate;
 
   StartedGame(final String homeTeam, final String awayTeam, final int homeScore,
@@ -14,6 +17,11 @@ final class StartedGame extends Game {
     super(homeTeam, awayTeam, homeScore, awayScore);
 
     this.startDate = startDate;
+  }
+
+  public static StartedGame fromStartedGameDto(@NonNull final StartGameDto startGameDto) {
+    return new StartedGame(startGameDto.homeTeam(), startGameDto.awayTeam(), 0, 0,
+        startGameDto.startDate());
   }
 
   @Override

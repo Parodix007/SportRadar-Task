@@ -2,11 +2,12 @@ package org.sebastiansiarczynski;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;
+import lombok.AccessLevel;
 import lombok.Getter;
 
 final class EndedGame extends Game {
 
-  @Getter
+  @Getter(AccessLevel.PACKAGE)
   private final ZonedDateTime endDate;
 
   EndedGame(final String homeTeam, final String awayTeam, final int homeScore, final int awayScore,
