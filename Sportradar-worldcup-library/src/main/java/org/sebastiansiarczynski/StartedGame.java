@@ -7,6 +7,11 @@ import lombok.Getter;
 import lombok.NonNull;
 import org.sebastiansiarczynski.dto.StartGameDto;
 
+/**
+ * Domain model of a started game
+ *
+ * @author Sebastian Siarczyński
+ */
 public final class StartedGame extends Game {
 
   @Getter(AccessLevel.PACKAGE)

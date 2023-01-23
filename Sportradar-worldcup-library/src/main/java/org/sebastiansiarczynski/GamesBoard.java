@@ -12,12 +12,19 @@ import org.sebastiansiarczynski.dto.UpdateGameDto;
 import org.sebastiansiarczynski.exception.GamesStoreException;
 import org.sebastiansiarczynski.interfaces.Board;
 
+/**
+ * Facade for this library. Implementation of the {@link Board}
+ *
+ * @author Sebastian Siarczyński
+ */
 @RequiredArgsConstructor
 public final class GamesBoard implements Board {
 
   private final GamesStore gamesStore;
 
-
+  /**
+   * {@inheritDoc}
+   */
   public String startGame(@NonNull final StartGameDto startGame) throws GamesStoreException {
 
     final StartedGame startedGame = new StartedGame(startGame.homeTeam(), startGame.awayTeam(), 0,
@@ -31,6 +38,9 @@ public final class GamesBoard implements Board {
     return gameUUID;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   public boolean finishGame(@NonNull final String gameUUID, @NonNull final ZonedDateTime endDate)
       throws GamesStoreException {
 
@@ -42,6 +52,9 @@ public final class GamesBoard implements Board {
     return gamesStore.finishGame(gameUUID, endedGame);
   }
 
+  /**
+   * {@inheritDoc}
+   */
   public boolean updateGameScore(@NonNull final UpdateGameDto updateGame)
       throws GamesStoreException {
 
@@ -52,6 +65,9 @@ public final class GamesBoard implements Board {
     return gamesStore.updateGame(updateGame.gameUUID(), gameToUpdate);
   }
 
+  /**
+   * {@inheritDoc}
+   */
   public List<EndedGameDto> getEndedGames() {
     final List<EndedGameDto> endedGameDtos = new ArrayList<>(
         gamesStore.getFinishGames().stream()

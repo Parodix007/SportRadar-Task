@@ -3,6 +3,11 @@ package org.sebastiansiarczynski;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Generic domain model of a game
+ *
+ * @author Sebastian Siarczyński
+ */
 abstract class Game {
 
   protected final String homeTeam;

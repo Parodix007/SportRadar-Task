@@ -5,6 +5,11 @@ import java.util.Objects;
 import lombok.AccessLevel;
 import lombok.Getter;
 
+/**
+ * Domain model of a finished game
+ *
+ * @author Sebastian Siarczyński
+ */
 final class EndedGame extends Game {
 
   @Getter(AccessLevel.PACKAGE)
