@@ -40,7 +40,7 @@ When you are ready with dto now it's time for start the game!
     gamesBoard.startGame(startGameDto)
 ```
 
-This method start a game with <b>initial score for both teams 0</b>. This method returns <b>uniq
+This method start a game with <b>initial score for both teams which is 0</b>. Returns <b>uniq
 game UUID</b>
 
 ### Update Game Score
