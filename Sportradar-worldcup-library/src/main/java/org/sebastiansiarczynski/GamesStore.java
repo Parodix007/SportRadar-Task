@@ -30,7 +30,7 @@ public final class GamesStore {
 
   /**
    * Factory method which allows to create a new instance of the {@link GamesStore} with started
-   * games
+   * games <b>with initial score 0-0 for each game</b>
    *
    * @param startedGames {@link Map} With started games
    * @return New instance of the {@link GamesStore}

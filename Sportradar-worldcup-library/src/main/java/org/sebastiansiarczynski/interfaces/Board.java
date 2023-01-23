@@ -16,7 +16,7 @@ import org.sebastiansiarczynski.exception.GamesStoreException;
 public interface Board {
 
   /**
-   * Method which allows to start a game
+   * Method which allows to start a game <b>with initial score 0-0</b>
    *
    * @param startGameDto {@link StartGameDto}
    * @return Uniq UUID of the game
