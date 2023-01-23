@@ -26,7 +26,7 @@ final class GamesStoreTest {
     gameUuid = UUID.randomUUID().toString();
     startedGame = new StartedGame("some-home-team", "some-away-team", 0, 0,
         ZonedDateTime.now());
-    endedGame = new EndedGame("some-home-team", "some-away-team", 0, 0, ZonedDateTime.now());
+    endedGame = new EndedGame("some-home-team", "some-away-team", 0, 0, ZonedDateTime.now(), ZonedDateTime.now());
   }
 
   @Test

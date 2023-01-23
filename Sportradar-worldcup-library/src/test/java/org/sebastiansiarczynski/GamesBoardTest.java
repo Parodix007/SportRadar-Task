@@ -106,10 +106,10 @@ class GamesBoardTest {
     ZonedDateTime now = ZonedDateTime.now();
     String name = "some-name";
     EndedGame firstEndedGame = new EndedGame(name, name, 1, 10,
-        now);
+        now, now);
     EndedGame secondEndedGame = new EndedGame(name, name, 1, 2,
-        now);
-    EndedGame thirdEndedGame = new EndedGame(name, name, 1, 1, now);
+        now, now);
+    EndedGame thirdEndedGame = new EndedGame(name, name, 1, 1, now, now);
 
     List<EndedGame> mockGames = List.of(firstEndedGame, secondEndedGame, thirdEndedGame);
 
@@ -143,9 +143,9 @@ class GamesBoardTest {
     ZonedDateTime now = ZonedDateTime.now();
     String name = "some-name";
     EndedGame firstEndedGame = new EndedGame(name, name, 1, 10,
-        now);
+        now, now);
     EndedGame secondEndedGame = new EndedGame(name, name, 1, 2,
-        now);
+        now, now);
 
     List<EndedGame> mockGames = List.of(firstEndedGame, secondEndedGame);
 
