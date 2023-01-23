@@ -1,5 +1,6 @@
 package org.sebastiansiarczynski;
 
+import java.time.Period;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 import lombok.AccessLevel;
@@ -14,12 +15,18 @@ final class EndedGame extends Game {
 
   @Getter(AccessLevel.PACKAGE)
   private final ZonedDateTime endDate;
+  @Getter(AccessLevel.PACKAGE)
+  private final ZonedDateTime startDate;
+  @Getter(AccessLevel.PACKAGE)
+  private final Period gameLength;
 
   EndedGame(final String homeTeam, final String awayTeam, final int homeScore, final int awayScore,
-      final ZonedDateTime endDate) {
+      final ZonedDateTime endDate, final ZonedDateTime startDate) {
     super(homeTeam, awayTeam, homeScore, awayScore);
 
     this.endDate = endDate;
+    this.startDate = startDate;
+    this.gameLength = Period.between(endDate.toLocalDate(), startDate.toLocalDate());
   }
 
   @Override

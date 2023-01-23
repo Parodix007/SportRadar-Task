@@ -47,7 +47,8 @@ public final class GamesBoard implements Board {
     final StartedGame gameToFinish = gamesStore.getStartedByGameUuid(gameUUID);
 
     final EndedGame endedGame = new EndedGame(gameToFinish.homeTeam, gameToFinish.awayTeam,
-        gameToFinish.getHomeScore(), gameToFinish.getAwayScore(), endDate);
+        gameToFinish.getHomeScore(), gameToFinish.getAwayScore(), endDate,
+        gameToFinish.getStartDate());
 
     return gamesStore.finishGame(gameUUID, endedGame);
   }
