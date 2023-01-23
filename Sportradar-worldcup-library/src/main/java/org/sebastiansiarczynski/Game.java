@@ -1,6 +1,7 @@
 package org.sebastiansiarczynski;
 
 import java.util.UUID;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,11 +16,11 @@ abstract class Game {
   protected final String homeTeam;
   protected final String awayTeam;
 
-  @Getter
-  @Setter
+  @Getter(AccessLevel.PACKAGE)
+  @Setter(AccessLevel.PACKAGE)
   private int homeScore;
-  @Getter
-  @Setter
+  @Getter(AccessLevel.PACKAGE)
+  @Setter(AccessLevel.PACKAGE)
   private int awayScore;
 
   Game(final String homeTeam, final String awayTeam, final int homeScore, final int awayScore) {

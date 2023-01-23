@@ -40,11 +40,12 @@ final class EndedGame extends Game {
     EndedGame endedGame = (EndedGame) o;
     return endDate.isEqual(endedGame.endDate) && homeTeam.equals(endedGame.homeTeam)
         && awayTeam.equals(
-        endedGame.awayTeam);
+        endedGame.awayTeam) && startDate.isEqual(endedGame.startDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(endDate, homeTeam, awayTeam, this.getHomeScore(), this.getAwayScore());
+    return Objects.hash(endDate, homeTeam, awayTeam, this.getHomeScore(), this.getAwayScore(),
+        startDate);
   }
 }
