@@ -1,5 +1,6 @@
 package org.sebastiansiarczynski;
 
+import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import lombok.Setter;
  */
 abstract class Game {
 
+  protected final String idx;
   protected final String homeTeam;
   protected final String awayTeam;
 
@@ -21,6 +23,7 @@ abstract class Game {
   private int awayScore;
 
   Game(final String homeTeam, final String awayTeam, final int homeScore, final int awayScore) {
+    this.idx = UUID.randomUUID().toString();
     this.homeTeam = homeTeam;
     this.awayTeam = awayTeam;
     this.homeScore = homeScore;
